@@ -1,0 +1,6 @@
+﻿# Archivos y carpetas de Rider
+.idea/
+
+# Archivos de compilación
+bin/
+obj/
