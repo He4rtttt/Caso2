@@ -1,16 +1,31 @@
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Agregar servicios a la aplicación
 builder.Services.AddControllersWithViews();
+
+// 🔹 Agregar servicios de autorización
+builder.Services.AddAuthorization(); 
+
+// Configurar Swagger
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configurar el pipeline HTTP
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
+}
+else
+{
+    // Habilitar Swagger solo en desarrollo
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Mi API v1");
+    });
 }
 
 app.UseHttpsRedirection();
@@ -18,6 +33,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+// 🔹 Agregar autorización después de la configuración de rutas
 app.UseAuthorization();
 
 app.MapControllerRoute(
