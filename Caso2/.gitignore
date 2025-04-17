@@ -4,3 +4,6 @@
 # Archivos de compilación
 bin/
 obj/
+
+# Configuración local de la conexion a la DB
+appsettings.Development.json
