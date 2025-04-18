@@ -28,6 +28,12 @@ namespace Caso2.Controllers;
             await _unitOfWork.Complete();
             return RedirectToAction(nameof(Index));
         }
+        public async Task<IActionResult> Details(int id)
+        {
+            var empleado = await _unitOfWork.Repository<Empleado>().GetByIdAsync(id);
+            if (empleado == null) return NotFound();
+            return View(empleado);
+        }
 
         public async Task<IActionResult> Edit(int id)
         {

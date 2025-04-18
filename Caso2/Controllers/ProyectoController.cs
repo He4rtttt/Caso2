@@ -35,6 +35,14 @@ public class ProyectoController : Controller
         await _unitOfWork.Complete();
         return RedirectToAction(nameof(Index));
     }
+    public async Task<IActionResult> Details(int id)
+    {
+        var proyecto = await _unitOfWork.Repository<Proyecto>().GetByIdAsync(id);
+        if (proyecto == null)
+            return NotFound();
+
+        return View(proyecto);
+    }
 
     public async Task<IActionResult> Edit(int id)
     {
