@@ -1,0 +1,25 @@
+﻿_Views/Empleado/Details.cshtml
+@model Caso2.Models.Empleado
+
+@{
+    ViewData["Title"] = "Detalles de Empleado";
+}
+
+<h1>Detalles de Empleado</h1>
+
+<div>
+    <h4>Empleado</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Nombre Completo</dt>
+        <dd>@Model.NombreCompleto</dd>
+        <dt>Cargo</dt>
+        <dd>@Model.Cargo</dd>
+        <dt>Correo Electrónico</dt>
+        <dd>@Model.CorreoElectronico</dd>
+        <dt>Teléfono</dt>
+        <dd>@Model.Telefono</dd>
+    </dl>
+    <a href="@Url.Action("Edit", "Empleado", new { id = Model.EmpleadoId })" class="btn btn-warning">Editar</a>
+    <a href="@Url.Action("Index", "Empleado")" class="btn btn-secondary">Volver</a>
+</div>

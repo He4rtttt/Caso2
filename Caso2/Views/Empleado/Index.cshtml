@@ -1,0 +1,58 @@
+﻿Views/Empleado/Index.cshtml
+@model IEnumerable<Caso2.Models.Empleado>
+
+@{
+    ViewData["Title"] = "Empleados";
+}
+
+<h1>Empleados</h1>
+
+<p>
+    <a href="@Url.Action("Create", "Empleado")" class="btn btn-primary">Crear Nuevo Empleado</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.NombreCompleto)</th>
+            <th>@Html.DisplayNameFor(model => model.Cargo)</th>
+            <th>@Html.DisplayNameFor(model => model.CorreoElectronico)</th>
+            <th>@Html.DisplayNameFor(model => model.Telefono)</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.NombreCompleto</td>
+                <td>@item.Cargo</td>
+                <td>@item.CorreoElectronico</td>
+                <td>@item.Telefono</td>
+                <td>
+                    <a href="@Url.Action("Details", "Empleado", new { id = item.EmpleadoId })" class="btn btn-info">Ver</a>
+                    <a href="@Url.Action("Edit", "Empleado", new { id = item.EmpleadoId })" class="btn btn-warning">Editar</a>
+                    <a href="@Url.Action("Delete", "Empleado", new { id = item.EmpleadoId })" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

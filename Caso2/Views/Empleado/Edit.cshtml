@@ -1,0 +1,40 @@
+﻿_Views/Empleado/Edit.cshtml
+@model Caso2.Models.Empleado
+
+@{
+    ViewData["Title"] = "Editar Empleado";
+}
+
+<h1>Editar Empleado</h1>
+
+<h4>Empleado</h4>
+<hr />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(model => model.EmpleadoId)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.NombreCompleto)
+        @Html.TextBoxFor(model => model.NombreCompleto, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.NombreCompleto)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Cargo)
+        @Html.TextBoxFor(model => model.Cargo, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Cargo)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.CorreoElectronico)
+        @Html.TextBoxFor(model => model.CorreoElectronico, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.CorreoElectronico)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Telefono)
+        @Html.TextBoxFor(model => model.Telefono, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Telefono)
+    </div>
+    <button type="submit" class="btn btn-primary">Actualizar</button>
+}
