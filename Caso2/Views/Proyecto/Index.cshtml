@@ -1,0 +1,38 @@
+﻿_Views/Proyecto/Index.cshtml
+@model IEnumerable<Caso2.Models.Proyecto>
+
+@{
+    ViewData["Title"] = "Proyectos";
+}
+
+<h1>Proyectos</h1>
+
+<p>
+    <a href="@Url.Action("Create", "Proyecto")" class="btn btn-primary">Crear Nuevo Proyecto</a>
+</p>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Nombre)</th>
+        <th>@Html.DisplayNameFor(model => model.Estado)</th>
+        <th>@Html.DisplayNameFor(model => model.DescripcionObjetivos)</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Nombre</td>
+            <td>@item.Estado</td>
+            <td>@item.DescripcionObjetivos</td>
+            <td>
+                <a href="@Url.Action("Details", "Proyecto", new { id = item.ProyectoId })" class="btn btn-info">Ver</a>
+                <a href="@Url.Action("Edit", "Proyecto", new { id = item.ProyectoId })" class="btn btn-warning">Editar</a>
+                <a href="@Url.Action("Delete", "Proyecto", new { id = item.ProyectoId })" class="btn btn-danger">Eliminar</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

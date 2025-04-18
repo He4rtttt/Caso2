@@ -1,0 +1,33 @@
+﻿_Views/Empleado/Delete.cshtml
+
+@model Caso2.Models.Empleado
+
+@{
+    ViewData["Title"] = "Eliminar Empleado";
+}
+
+<h1>Eliminar Empleado</h1>
+
+<h4>Empleado</h4>
+<hr />
+
+<div>
+    <h5>¿Estás seguro de que deseas eliminar este empleado?</h5>
+    <dl class="dl-horizontal">
+        <dt>Nombre Completo</dt>
+        <dd>@Model.NombreCompleto</dd>
+        <dt>Cargo</dt>
+        <dd>@Model.Cargo</dd>
+        <dt>Correo Electrónico</dt>
+        <dd>@Model.CorreoElectronico</dd>
+        <dt>Teléfono</dt>
+        <dd>@Model.Telefono</dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a href="@Url.Action("Index", "Empleado")" class="btn btn-secondary">Cancelar</a>
+    }
+</div>
